@@ -3,6 +3,7 @@ from archives.models import Presenter
 
 class PresenterAdmin(admin.ModelAdmin):
 	list_display = ('name', 'major', 'grad_year', 'project_title')
+	list_filter = ['grad_year', 'major']
 	fieldsets = [
         ('Personal',               {'fields': ['name', 'major', 'grad_year']}),
         ('Project Information', {'fields': ['project_title', 'informal_abstract', 'formal_abstract']}),
