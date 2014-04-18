@@ -1,0 +1,9 @@
+{% if archives_list %}
+    <ul>
+    {% for presenter in archives_list %}
+        <li><a href="/archives/{{presenter.grad_year}}/{{presenter.url_name}}/">{{presenter.display_name}}</a>: {{presenter.project_title}}.</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No archives currently exist.</p>
+{% endif %}
