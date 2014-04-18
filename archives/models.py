@@ -1,8 +1,9 @@
 from django.db import models
 
 class Presenter(models.Model):
-	name = models.CharField(max_length=200)
-	major = models.CharField(max_length=200)
+	first_name = models.CharField(max_length=200,default="")
+	last_name = models.CharField(max_length=200,default="")
+	major = models.CharField(max_length=200,default="")
 	grad_year = models.IntegerField(default=0)
 	project_title = models.CharField(max_length=200, blank=True, null=True)
 	profile_image = models.ImageField(upload_to="profile_images", blank=True, null=True)
@@ -12,6 +13,9 @@ class Presenter(models.Model):
 	project_image = models.ImageField(upload_to="project_images", blank=True, null=True)
 	project_docs = models.ImageField(upload_to="project_docs", blank=True, null=True)
 
+	def display_name(self):
+		return first_name + "_" + last_name
+
 	def __unicode__(self):
-		return self.name
+		return self.first_name, self.last_name
 
