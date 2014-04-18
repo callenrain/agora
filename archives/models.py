@@ -14,8 +14,10 @@ class Presenter(models.Model):
 	project_docs = models.ImageField(upload_to="project_docs", blank=True, null=True)
 
 	def display_name(self):
-		return first_name + "_" + last_name
+		return "%s %s" % (self.first_name, self.last_name)
+
+	def url_name(self):
+		return "%s_%s" % (self.first_name, self.last_name)
 
 	def __unicode__(self):
-		return self.first_name, self.last_name
-
+		return "%s %s" % (self.first_name, self.last_name)
