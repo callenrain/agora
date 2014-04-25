@@ -17,7 +17,7 @@ class Presenter(models.Model):
 		return "%s %s" % (self.first_name, self.last_name)
 
 	def url_name(self):
-		return "%s_%s" % (self.first_name, self.last_name)
+		return "%s_%s" % (self.first_name.lower(), self.last_name.lower())
 
 	def __unicode__(self):
 		return "%s %s" % (self.first_name, self.last_name)
