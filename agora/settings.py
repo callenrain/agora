@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'south',
     'archives',
     'home',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
