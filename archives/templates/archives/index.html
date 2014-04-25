@@ -1,9 +1,12 @@
-{% if archives_list %}
-    <ul>
-    {% for presenter in archives_list %}
-        <li><a href="/archives/{{presenter.grad_year}}/{{presenter.url_name}}/">{{presenter.display_name}}</a>: {{presenter.project_title}}.</li>
+{% if archives_dict %}
+    {% for year in archives_dict.keys %}
+        <h2><a href="/archives/{{year}}/">Class of {{year}}</a></h2>
+        <ul>
+        	{% for presenter, year in archives_dict%}
+        		<li><a href="/archives/{{presenter.grad_year}}/{{presenter.id}}/">{{presenter.display_name}}</a>: {{presenter.project_title}}.</li>
+        	{% endfor %}
+        </ul>
     {% endfor %}
-    </ul>
 {% else %}
     <p>No archives currently exist.</p>
 {% endif %}
