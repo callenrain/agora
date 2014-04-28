@@ -2,7 +2,7 @@ from django.contrib import admin
 from archives.models import Presenter
 
 class PresenterAdmin(admin.ModelAdmin):
-	list_display = ('first_name', 'last_name', 'major', 'grad_year', 'project_title')
+	list_display = ('first_name', 'last_name', 'nickname', 'major', 'grad_year', 'project_title')
 	list_filter = ['grad_year', 'major']
 	fieldsets = [
         ('Personal',               {'fields': ['first_name', 'last_name', 'major', 'grad_year']}),
