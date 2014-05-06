@@ -7,7 +7,10 @@ from archives.models import Presenter
 
 def index(request):
 	archives_list = Presenter.objects.order_by('grad_year')
-	archives_dict = {v.grad_year:v for v in archives_list}
+	grad_years = [presenter.grad_year for presenter in archives_list]
+	archives_dict = {grad_year: [] for grad_year in grad_years}
+	for presenter in archives_list:
+		archives_dict[presenter.grad_year].append(presenter)
 	context = RequestContext(request, {
 		"archives_dict" : archives_dict,
 	})
@@ -21,8 +24,8 @@ def year(request, grad_year):
 	})
 	return render(request, "archives/grad_year.html", context)
 
-def presenter(request, 	grad_year, presenter_id):
-	presenter_object = get_object_or_404(Presenter, id=presenter_id)
+def presenter(request, grad_year, nickname):
+	presenter_object = get_object_or_404(Presenter, nickname=nickname)
 	context = RequestContext(request, {
 		"presenter" : presenter_object,
 	})
