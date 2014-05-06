@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from django.http import HttpResponse
-from django.template import RequestContext, loader
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.views import generic
+
 from archives.models import Presenter
 
 def index(request):
@@ -11,7 +13,7 @@ def index(request):
 	})
 	return render(request, "archives/index.html", context)
 
-def grad_year(request, grad_year):
+def year(request, grad_year):
 	grad_year_archives_list = get_list_or_404(Presenter, grad_year=grad_year)
 	context = RequestContext(request, {
 		"grad_year_archives_list" : grad_year_archives_list,
@@ -19,7 +21,7 @@ def grad_year(request, grad_year):
 	})
 	return render(request, "archives/grad_year.html", context)
 
-def presenter(request, grad_year, presenter_id):
+def presenter(request, 	grad_year, presenter_id):
 	presenter_object = get_object_or_404(Presenter, id=presenter_id)
 	context = RequestContext(request, {
 		"presenter" : presenter_object,
