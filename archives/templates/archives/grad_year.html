@@ -5,7 +5,7 @@
 
 <h2>{{year}}</h2>
 <ul>
-	{% for presenter in grad_year_archives_list%}
+	{% for presenter in year_archives_list%}
 		<li><a href="/archives/{{presenter.grad_year}}/{{presenter.nickname}}/">{{presenter.first_name}} {{presenter.last_name}} </a>: {{presenter.project_title}}.</li>
 	{% endfor %}
 </ul>

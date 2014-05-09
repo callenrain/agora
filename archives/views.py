@@ -32,13 +32,13 @@ class YearView(generic.ListView):
 
 	def get_queryset(self):
 		"""Return list of presenters from a given graduation year."""
-		return get_list_or_404(Presenter, grad_year=2015)
+		year = self.kwargs['year']
+		grad_year_archives_list = get_list_or_404(Presenter, grad_year=year)
+		return grad_year_archives_list
 
 
 class PresenterView(generic.DetailView):
 	model = Presenter
-	template_name = 'polls/results.html'
-
-	# def get_presenter(self, id):
-	# 	"""Return a presenter object."""
-	# 	return
+	template_name = 'archives/presenter.html'
+	slug_field = 'nickname'
+	slug_url_kwarg = 'presenter_id'
