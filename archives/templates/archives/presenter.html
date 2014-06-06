@@ -2,6 +2,25 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
+{% load staticfiles %}
 
 <h2>{{presenter.first_name}} {{presenter.last_name}}</h2> 
 <h3>{{presenter.project_title}}</h3>
+
+<div>
+	<iframe src="//player.vimeo.com/video/{{presenter.video}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<p>
+{{presenter.formal_abstract}}
+</p>
+
+<p>
+{{presenter.informal_abstract}}
+</p>
+
+
+{{ settings.MEDIA_URL }}
+
+<img src="/media/{{presenter.project_image}}">
+<img src="/media/{{presenter.profile_image}}">

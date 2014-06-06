@@ -10,7 +10,7 @@ class Presenter(models.Model):
 	profile_image = models.ImageField(upload_to="profile_images", blank=True, null=True)
 	formal_abstract = models.TextField(blank=True, null=True)
 	informal_abstract = models.TextField(blank=True, null=True)
-	video = models.URLField(blank=True, null=True)
+	video = models.CharField(max_length=200, blank=True, null=True)
 	project_image = models.ImageField(upload_to="project_images", blank=True, null=True)
 	project_docs = models.ImageField(upload_to="project_docs", blank=True, null=True)
 
@@ -23,4 +23,4 @@ class Presenter(models.Model):
 	def save(self, *args, **kwargs):
 		if self.nickname == "":
 			self.nickname = self.url_name()
-			super(Presenter, self).save(*args, **kwargs)
+		super(Presenter, self).save(*args, **kwargs)

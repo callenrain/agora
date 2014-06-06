@@ -16,3 +16,94 @@
 {% endif %}
 </div>
 {% endblock %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% load staticfiles %}
+
+<link href="/static/style.css" rel="stylesheet" type="text/css">
+
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+  	<div id="wrap">
+
+  		<!-- NAVBAR -->
+  		<div id="navbar-main">
+  			<div class="navbar navbar-default navbar-fixed-top">
+  				<div class="container">
+  					<div class="navbar-header">
+  						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+  							<span class="icon-bar"></span>
+  							<span class="icon-bar"></span>
+  							<span class="icon-bar"></span>
+  						</button>
+  						<a class="navbar-brand">
+  							<img alt="" title="" class="img-responsive logo" src="/media/laurel.png">
+  						</a>
+  					</div>
+  					<div class="navbar-collapse collapse">
+  						<ul class="nav navbar-nav">
+  							<li class="active"><a href="index.php">Main</a></li>
+  							<li><a href="mission.html">Mission</a></li>
+  							<li><a href="process.html">Process</a></li>
+  							<li><a href="winners.html">Last Year's Winners</a></li>
+  						</ul>
+  					</div><!--/.nav-collapse -->
+  				</div>
+  			</div>
+  		</div>
+
+
+<div class="index-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+			<h2>Swarthmore Agora Archives</h2>
+
+			{% if archives_dict %}
+
+                <div class="panel-group" id="accordion">
+
+    				{% for year, presenter_list in archives_dict.items %}
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{year}}"><!--<h3><a href="/archives/{{year}}/">Class of {{year}}</a></h3>-->alsalsdkj</a>
+                                </h4>
+                            </div>
+                            
+                            <div id="collapse{{year}}" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul>
+                                        {% for presenter in presenter_list%}
+                                            <li><a href="/archives/{{presenter.grad_year}}/{{presenter.nickname}}/">{{presenter.first_name}} {{presenter.last_name}}</a>: {{presenter.project_title}}.</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+    				{% endfor %}
+
+                </div>
+
+			{% else %}
+
+				<p>No archives currently exist.</p>
+
+			{% endif %}
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+</div>
+
+
+
+</body>
