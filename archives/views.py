@@ -5,13 +5,6 @@ from django.views import generic
 
 from archives.models import Presenter
 
-# def presenter(request, grad_year, nickname):
-# 	presenter_object = get_object_or_404(Presenter, nickname=nickname)
-# 	context = RequestContext(request, {
-# 		"presenter" : presenter_object,
-# 	})
-# 	return render(request, "archives/presenter.html", context)
-
 class IndexView(generic.ListView):
 	template_name = 'archives/index.html'
 	context_object_name = 'archives_dict'
