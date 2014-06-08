@@ -1,26 +1,184 @@
+
+{% load staticfiles %}
+
+<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+
 {% load bootstrap3 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
-{% load staticfiles %}
 
-<h2>{{presenter.first_name}} {{presenter.last_name}}</h2> 
-<h3>{{presenter.project_title}}</h3>
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 
-<div>
-	<iframe src="//player.vimeo.com/video/{{presenter.video}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<body data-offset="0" data-target="#navbar-main">
+    <div id="wrap">
+
+      <!-- NAVBAR -->
+      <div id="navbar-main">
+        <div class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand">
+               <img alt="" title="" class="img-responsive logo" src="{% static 'img/laurel.png' %}">
+             </a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.php">Main</a></li>
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li class="active"><a href="winners.html">Last Year's Winners</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="presenter-header">
+          <div class="container">
+            <div class="col-lg-offset-2 col-lg-8">
+              <h1>{{ presenter.first_name }} {{ presenter.last_name }}</h1> 
+              <hr>
+              <h2> {{presenter.grad_year}} Agora Scholar </h2>
+              <h3> Major in {{ presenter.major }}</h3>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="presenter-container">
+        <div class="container">
+        	<div class="row">
+        		<div class="col-lg-3 col-lg-offset-2">
+					<div class="row">
+					<div class="col-lg-12 presenter-image-wrapper">
+							<img class="presenter-image" src="/media/{{presenter.profile_image}}" width=200 height=200>	
+					</div>	
+					</div>
+				</div>
+
+
+				<div class="col-lg-5">
+					<div class="row" >
+							<div class="col-lg-12" id="presenter-bio-area">
+								<div id="presenter-bio-wrap">
+									<p  id="presenter-bio" >{{presenter.informal_abstract}} </p>
+								</div>
+							</div>	
+					</div>							
+				</div>	
+
+				</div>						
+
+{{ presenter.project_title }}
+        	<div class="row">
+
+				<div class="col-lg-9">
+					<div class="row">
+        				    <div class="col-lg-12">
+        				    	<h3> Informal Abstract: </h3>
+        				    	<hr>
+								<p> {{presenter.formal_abstract}} </p>
+							</div>	
+					</div>	
+
+					<div class="row">
+
+							<div class="col-lg-12">
+								<h3> Formal Abstract: </h3>
+        				    	<hr>
+								<p> {{presenter.informal_abstract}} </p>
+							</div>	
+					</div>							
+				</div>	
+        	</div>
+
+
+			<div class="row">
+			    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" style="vertical-line">
+			      <div class="video-container">
+				<iframe src="//player.vimeo.com/video/{{presenter.video}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	      	  </div>
+	      	</div>
+	      </div>
+
+			<div class="row">
+		  		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" style="vertical-line">
+
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				  </ol>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+				    <div class="item active">
+				      <img src="http://placehold.it/900x500" alt="">
+				      <div class="carousel-caption">
+				        Caption
+				      </div>
+				    </div>
+
+				    <div class="item">
+				      <img src="http://placehold.it/900x500" alt="">
+				      <div class="carousel-caption">
+				        Caption
+				      </div>
+				    </div>
+
+				    <div class="item">
+				      <img src="http://placehold.it/900x500" alt="">
+				      <div class="carousel-caption">
+				        Caption
+				      </div>
+				    </div>
+
+				  </div>
+
+				  <!-- Controls -->
+				  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+				</div>
+				</div>
+			</div>
+
+		<div class="row">
+		  	<div class="col-lg-2 col-lg-offset-5 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3" style="vertical-line">
+				<button type="button" class="btn btn-block btn-lg btn-theme">Sketches</button>
+			</div>
+		</div>
+
+		</div>
+	</div>
+
+
+
+
+<!-- <img src="/media/{{presenter.project_image}}"> -->
+
+
+ <div class="footer">
+  <div class="row">
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2" style="vertical-line">
+          <p style="float: left; display: inline-block;">Swarthmore Agora</p>
+          <p style="float: right; display: inline-block;">
+            <a href="http://justincosentino.com">Tino</a> &amp <a href="http://callenrain.com">Callen</a>
+          </p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<p>
-{{presenter.formal_abstract}}
-</p>
-
-<p>
-{{presenter.informal_abstract}}
-</p>
-
-
-{{ settings.MEDIA_URL }}
-
-<img src="/media/{{presenter.project_image}}">
-<img src="/media/{{presenter.profile_image}}">
