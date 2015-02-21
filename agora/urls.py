@@ -8,10 +8,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 			include('home.urls')),
-    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', 	include(admin.site.urls)),
     url(r'^archives/', 	include('archives.urls')),
 )
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
   
 urlpatterns += patterns('',
